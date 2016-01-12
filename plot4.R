@@ -1,15 +1,15 @@
 file <- "household_power_consumption.txt"
-data <- read.table(file, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
-subSetData <- data[data$Date %in% c("1/2/2007","2/2/2007") ,]
+epower <- read.table(file, header=TRUE, sep=";", stringsAsFactors=FALSE, dec=".")
+subset_epower <- epower[epower$Date %in% c("1/2/2007","2/2/2007") ,]
 
 #str(subSetData)
-datetime <- strptime(paste(subSetData$Date, subSetData$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
-globalActivePower <- as.numeric(subSetData$Global_active_power)
-globalReactivePower <- as.numeric(subSetData$Global_reactive_power)
-voltage <- as.numeric(subSetData$Voltage)
-subMetering1 <- as.numeric(subSetData$Sub_metering_1)
-subMetering2 <- as.numeric(subSetData$Sub_metering_2)
-subMetering3 <- as.numeric(subSetData$Sub_metering_3)
+datetime <- strptime(paste(subset_epower$Date, subset_epower$Time, sep=" "), "%d/%m/%Y %H:%M:%S") 
+globalActivePower <- as.numeric(subset_epower$Global_active_power)
+globalReactivePower <- as.numeric(subset_epower$Global_reactive_power)
+voltage <- as.numeric(subset_epower$Voltage)
+subMetering1 <- as.numeric(subset_epower$Sub_metering_1)
+subMetering2 <- as.numeric(subset_epower$Sub_metering_2)
+subMetering3 <- as.numeric(subset_epower$Sub_metering_3)
 
 
 png("plot4.png", width=480, height=480)
